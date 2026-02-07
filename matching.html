@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Matching Cards</title>
+
+<style>
+body{
+margin:0;
+font-family:-apple-system;
+background:#7ecf68;
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:16px;
+}
+
+.back{
+align-self:flex-start;
+margin-bottom:10px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+max-width:360px;
+width:100%;
+}
+
+.card{
+background:white;
+border-radius:12px;
+height:80px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<a class="back" href="index.html">← Back</a>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const icons=["⭐","⭐","❤️","❤️","🌙","🌙","🐸","🐸"];
+icons.sort(()=>Math.random()-0.5);
+
+let first=null;
+
+icons.forEach(icon=>{
+const c=document.createElement("div");
+c.className="card";
+c.onclick=()=>{
+if(c.textContent) return;
+c.textContent=icon;
+if(!first){
+first=c;
+}else{
+if(first.textContent!==c.textContent){
+setTimeout(()=>{
+first.textContent="";
+c.textContent="";
+},600);
+}
+first=null;
+}
+};
+document.getElementById("grid").appendChild(c);
+});
+</script>
+
+</body>
+</html>
