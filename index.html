@@ -1,122 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 <title>Nessa Games</title>
 
 <style>
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: system-ui, -apple-system, sans-serif;
-  overflow: hidden;
-}
+  html,body{height:100%; margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;}
+  .screen{position:relative; height:100%; overflow:hidden; background:#cfead2;}
 
-/* Hero background */
-body {
-  background: url("play-hero.png") center/cover no-repeat fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  /* Real image background (works reliably on iPhone) */
+  .bg{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    transform: scale(1.02);
+  }
 
-/* Soft overlay to improve readability */
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom,
-    rgba(255,255,255,0.1),
-    rgba(255,255,255,0.4));
-}
+  /* Soft readability wash */
+  .wash{
+    position:absolute; inset:0;
+    background: linear-gradient(to bottom, rgba(255,255,255,.08), rgba(255,255,255,.42));
+  }
 
-/* Center UI panel */
-.panel {
-  position: relative;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(8px);
-  border-radius: 28px;
-  padding: 28px;
-  width: 85%;
-  max-width: 420px;
-  text-align: center;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-  animation: float 3s ease-in-out infinite;
-}
+  .panel{
+    position:relative;
+    width:min(420px, 86vw);
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,.86);
+    border-radius: 28px;
+    padding: 26px;
+    text-align:center;
+    box-shadow: 0 20px 45px rgba(0,0,0,.18);
+    backdrop-filter: blur(10px);
+  }
 
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(0px); }
-}
+  h1{margin:0 0 6px; color:#1c3c2b; font-size:28px;}
+  p{margin:0 0 16px; color:#3a5b47;}
 
-h1 {
-  margin: 0 0 6px 0;
-  font-size: 28px;
-  color: #1c3c2b;
-}
+  a.btn{
+    display:block;
+    padding:16px 18px;
+    margin:12px 0;
+    border-radius:18px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:800;
+    font-size:18px;
+    box-shadow: 0 10px 20px rgba(0,0,0,.15);
+    transition: transform .12s ease;
+  }
+  a.btn:active{transform: scale(.96);}
+  .g1{background: linear-gradient(135deg,#2dbb6c,#1e9e57);}
+  .g2{background: linear-gradient(135deg,#ff5aa5,#d83b82);}
 
-p {
-  margin: 0 0 18px 0;
-  color: #3a5b47;
-}
-
-/* Game buttons */
-.btn {
-  display: block;
-  padding: 16px;
-  margin: 12px 0;
-  border-radius: 18px;
-  font-size: 18px;
-  font-weight: bold;
-  text-decoration: none;
-  color: white;
-  transition: transform 0.15s ease;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
-
-.btn:active {
-  transform: scale(0.95);
-}
-
-.matching {
-  background: linear-gradient(135deg,#2dbb6c,#1e9e57);
-}
-
-.word {
-  background: linear-gradient(135deg,#ff5aa5,#d83b82);
-}
-
-.tip {
-  margin-top: 12px;
-  font-size: 13px;
-  color: #2f4f3c;
-}
-
+  .tip{margin-top:10px; font-size:13px; color:#2f4f3c;}
 </style>
 </head>
 
 <body>
+  <div class="screen">
+    <img class="bg" src="play-hero.png" alt="Nessa hero" />
+    <div class="wash"></div>
 
-<div class="overlay"></div>
+    <div class="panel">
+      <h1>Nessa Games</h1>
+      <p>Pick a game to play</p>
 
-<div class="panel">
-  <h1>Nessa Games</h1>
-  <p>Pick a game to play</p>
+      <a class="btn g1" href="matching.html">Matching Cards</a>
+      <a class="btn g2" href="wordsearch.html">Word Search</a>
 
-  <a href="matching.html" class="btn matching">
-    Matching Cards
-  </a>
-
-  <a href="wordsearch.html" class="btn word">
-    Word Search
-  </a>
-
-  <div class="tip">
-    Add to Home Screen for an app-like feel 💚
+      <div class="tip">Tip: Add to Home Screen for an app-like feel 💚</div>
+    </div>
   </div>
-</div>
-
 </body>
 </html>
